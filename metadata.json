@@ -1,0 +1,6 @@
+{
+  "name": "University Student Hub",
+  "description": "An AI-powered University Ecosystem featuring Academic Hub (GPA & Tasks), AI Learning Hub, Opportunities Hub (Scholarship Finder & Internship/Career Hub), UniGuide AI Helpdesk, and a Universal Global AI Assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

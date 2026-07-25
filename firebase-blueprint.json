@@ -1,0 +1,33 @@
+{
+  "entities": {
+    "users": {
+      "title": "User Profile",
+      "description": "Stores basic user info and account metadata",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["email"]
+    },
+    "userAcademicData": {
+      "title": "User Academic Data",
+      "description": "User specific semesters, courses, tasks, budget, study plans, decks, and vault settings",
+      "type": "object",
+      "properties": {
+        "semesters": { "type": "array" },
+        "courses": { "type": "array" },
+        "tasks": { "type": "array" },
+        "budget": { "type": "object" },
+        "savedPlans": { "type": "array" },
+        "savedDecks": { "type": "array" },
+        "vault": { "type": "object" },
+        "uniguideMessages": { "type": "array" },
+        "updatedAt": { "type": "string" }
+      }
+    }
+  }
+}
