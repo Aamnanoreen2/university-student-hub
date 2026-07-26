@@ -1,11 +1,11 @@
 {
-  "projectId": "YOUR_FIREBASE_PROJECT_ID",
-  "appId": "YOUR_FIREBASE_APP_ID",
-  "apiKey": "YOUR_FIREBASE_API_KEY",
-  "authDomain": "YOUR_FIREBASE_AUTH_DOMAIN",
-  "storageBucket": "YOUR_FIREBASE_STORAGE_BUCKET",
-  "messagingSenderId": "YOUR_FIREBASE_MESSAGING_SENDER_ID",
+  "projectId": "integrated-aloe-907pf",
+  "appId": "1:1020448132048:web:cca779434ae980247387d5",
+  "apiKey": "AIzaSyC4ruuRK0vxpMahJD0TnbzaVRN2ZvtMDis",
+  "authDomain": "integrated-aloe-907pf.firebaseapp.com",
+  "storageBucket": "integrated-aloe-907pf.firebasestorage.app",
+  "messagingSenderId": "1020448132048",
   "measurementId": "",
-  "oAuthClientId": "YOUR_FIREBASE_OAUTH_CLIENT_ID",
+  "oAuthClientId": "1020448132048-jjncef60mbfgaejs4unup2qo7ta2j1hj.apps.googleusercontent.com",
   "recaptchaSiteKey": ""
 }
