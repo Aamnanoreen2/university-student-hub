@@ -230,6 +230,7 @@ Distributed under the **MIT License**. See `LICENSE` for details.
 <img width="1833" height="775" alt="image" src="https://github.com/user-attachments/assets/75760897-c199-4648-ad23-5c192d44ba86" />
 
 
+<img width="644" height="793" alt="image" src="https://github.com/user-attachments/assets/e1c7cb34-1a73-4542-b5a0-48be14b137c2" />
 
 
 # 🤖 AI Modules
@@ -397,6 +398,155 @@ All AI assistants follow the same standards throughout the platform.
 - TypeScript
 - Tailwind CSS
 - AI-driven workflow architecture
+
+# 🚀 Getting Started
+
+Follow these steps to run the University Student Hub locally.
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/Aamnanoreen2/university-student-hub.git
+cd university-student-hub
+```
+
+---
+
+## 2. Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+## 3. Configure Environment Variables
+
+Create a `.env` file in the project root.
+
+Example:
+
+```env
+# Groq AI (Server-side)
+GROQ_API_KEY=your_groq_api_key
+
+# Firebase Client Configuration
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_APP_ID=your_app_id
+VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+VITE_FIREBASE_STORAGE_BUCKET=your_project.firebasestorage.app
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_OAUTH_CLIENT_ID=your_oauth_client_id
+
+# Application URL
+APP_URL=http://localhost:3000
+```
+
+> **Note:** Never commit your `.env` file to GitHub. The project includes `.env.example` as a template.
+
+---
+
+## 4. Start the Development Server
+
+```bash
+npm run dev
+```
+
+The application will start at:
+
+```
+http://localhost:3000
+```
+
+---
+
+## 5. Build for Production
+
+```bash
+npm run build
+```
+
+---
+
+## 6. Start the Production Server
+
+```bash
+npm start
+```
+
+---
+
+# 📂 Project Structure
+
+```
+.
+├── client/               # React frontend
+├── server.ts             # Express server
+├── public/               # Static assets
+├── dist/                 # Production build
+├── .env.example          # Environment variable template
+├── package.json
+└── README.md
+```
+
+---
+
+# ⚙️ Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm install` | Install project dependencies |
+| `npm run dev` | Start the development server |
+| `npm run build` | Build the application for production |
+| `npm start` | Start the production server |
+| `npm run lint` | Run TypeScript type checking |
+
+---
+
+# 🔑 Environment Variables
+
+| Variable | Description |
+|----------|-------------|
+| `GROQ_API_KEY` | Groq API key used for AI-powered assistants |
+| `VITE_FIREBASE_API_KEY` | Firebase Web API Key |
+| `VITE_FIREBASE_PROJECT_ID` | Firebase Project ID |
+| `VITE_FIREBASE_APP_ID` | Firebase App ID |
+| `VITE_FIREBASE_AUTH_DOMAIN` | Firebase Authentication Domain |
+| `VITE_FIREBASE_STORAGE_BUCKET` | Firebase Storage Bucket |
+| `VITE_FIREBASE_MESSAGING_SENDER_ID` | Firebase Messaging Sender ID |
+| `VITE_FIREBASE_OAUTH_CLIENT_ID` | Firebase OAuth Client ID |
+| `APP_URL` | Local or deployed application URL |
+
+---
+
+# ⚠️ Troubleshooting
+
+### PowerShell blocks npm scripts
+
+Run:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+Then restart PowerShell.
+
+---
+
+### Port 3000 is already in use
+
+Stop the process using port **3000** or change the application's port before starting the server.
+
+---
+
+### AI Assistant reports missing `GROQ_API_KEY`
+
+- Ensure `GROQ_API_KEY` is present in your `.env` file.
+- Restart the development server after updating environment variables.
+- For Vercel deployments, add the variable under **Project Settings → Environment Variables** and **redeploy** the project.
+
+
 
 <p center>
 Made with ❤️ for students worldwide by <strong>UniHub.AI Team</strong>. Direct feedback: <a href="mailto:aamnanoreen0@gmail.com">aamnanoreen0@gmail.com</a>
