@@ -341,7 +341,7 @@ export const GlobalAIAssistant: React.FC<GlobalAIAssistantProps> = ({
       const errMsg: OmniMessage = {
         id: "omni_err_" + Date.now(),
         sender: "assistant",
-        text: "I experienced a brief connection error. Please verify your GEMINI_API_KEY in Settings > Secrets.",
+        text: "I experienced a brief connection error. Please verify that GROQ_API_KEY is configured in your hosting environment (for Vercel: Project Settings > Environment Variables).",
         timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
       };
       onSaveOmniMessages([...updated, errMsg]);

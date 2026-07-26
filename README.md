@@ -4,7 +4,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38BDF8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Firebase](https://img.shields.io/badge/Firebase-Firestore_%26_Auth-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com)
-[![Gemini AI](https://img.shields.io/badge/Gemini_AI-2.4-8E75B2?logo=google&logoColor=white)](https://deepmind.google/technologies/gemini)
+[![Groq AI](https://img.shields.io/badge/Groq_AI-API_Cloud-orange?logo=fastapi&logoColor=white)](https://groq.com)
 [![Express](https://img.shields.io/badge/Express-4.21-000000?logo=express&logoColor=white)](https://expressjs.com)
 [![Gmail API](https://img.shields.io/badge/Gmail_API-Google_Workspace-EA4335?logo=gmail&logoColor=white)](https://developers.google.com/gmail/api)
 
@@ -33,7 +33,7 @@ University life for modern students is notoriously fragmented:
 ### 2. 🧠 AI Study Companion
 * **Automated Study Plan Generator**: Inputs course syllabi, exam dates, and available weekly study hours to output structured daily study blueprints.
 * **AI Flashcard Creator**: Generates study-ready Q&A flashcards on any subject (Calculus, Data Structures, Biochemistry, Microeconomics) in seconds.
-* **Deep Concept Explainer**: Breaks down complex academic concepts into simple analogies, key formulas, and step-by-step examples powered by Gemini AI.
+* **Deep Concept Explainer**: Breaks down complex academic concepts into simple analogies, key formulas, and step-by-step examples powered by Groq AI.
 
 ### 3. 🎓 Scholarships & Financial Aid Finder
 * **Global & Regional Database**: Includes curated listings for HEC Need-Based, Fulbright, Erasmus Mundus, Türkiye Bursları, Chevening, and University Merit grants.
@@ -83,7 +83,7 @@ University life for modern students is notoriously fragmented:
 
 ### **Backend & APIs**
 * **Server**: Express.js (TypeScript runtime with `tsx` in dev, compiled to single CJS bundle via `esbuild` for production)
-* **AI Engine**: `@google/genai` official SDK utilizing Gemini AI models
+* **AI Engine**: `groq-sdk` official SDK utilizing Groq LLM models
 * **Workspace Integration**: Google Gmail REST API (`gmail.googleapis.com/gmail/v1/users/me/messages/send`)
 * **Database & Auth**: Firebase Firestore & Firebase Authentication (`firebase/auth`, `firebase/firestore`)
 
@@ -93,7 +93,7 @@ University life for modern students is notoriously fragmented:
 
 ```
 .
-├── server.ts                    # Express backend (Gemini AI proxy & Gmail API endpoints)
+├── server.ts                    # Express backend (Groq AI proxy & Gmail API endpoints)
 ├── firestore.rules              # Firebase Firestore Security Rules
 ├── firebase-applet-config.json  # Firebase Project Configuration
 ├── index.html                   # Entry HTML document
@@ -131,7 +131,7 @@ University life for modern students is notoriously fragmented:
 ### Prerequisites
 * **Node.js**: v18.0.0 or higher
 * **npm**: v9.0.0 or higher
-* **Gemini API Key**: Obtainable from [Google AI Studio](https://aistudio.google.com/)
+* **Groq API Key**: Obtainable from [Groq Console](https://console.groq.com/)
 
 ### 1. Clone the Repository
 ```bash
@@ -147,7 +147,7 @@ npm install
 ### 3. Configure Environment Variables
 Create a `.env` file in the project root:
 ```env
-GEMINI_API_KEY="your_actual_gemini_api_key"
+GROQ_API_KEY="your_actual_groq_api_key"
 PORT=3000
 ```
 

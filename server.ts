@@ -2,7 +2,14 @@ import express from "express";
 import path from "path";
 import dotenv from "dotenv";
 import { createServer as createViteServer } from "vite";
-import { GoogleGenAI, Type } from "@google/genai";
+import Groq from "groq-sdk";
+
+const Type = {
+  OBJECT: "object",
+  STRING: "string",
+  INTEGER: "integer",
+  ARRAY: "array"
+} as const;
 
 dotenv.config();
 
@@ -13,48 +20,54 @@ async function startServer() {
   app.use(express.json({ limit: "10mb" }));
   app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
-  // Helper to get GoogleGenAI client lazily to avoid crashing on startup if key is missing
-  function getGeminiClient() {
-    const apiKey = process.env.GEMINI_API_KEY;
+  // Helper to get Groq client lazily to avoid crashing on startup if key is missing
+  function getGroqClient() {
+    const apiKey = process.env.GROQ_API_KEY;
     if (!apiKey) {
-      throw new Error("GEMINI_API_KEY environment variable is missing. Please set it in the Settings > Secrets menu.");
+      throw new Error("GROQ_API_KEY environment variable is missing. Please set it in your hosting environment (for Vercel: Project Settings > Environment Variables).");
     }
-    return new GoogleGenAI({
+    return new Groq({
       apiKey,
-      httpOptions: {
-        headers: {
-          "User-Agent": "aistudio-build",
-        },
-      },
     });
   }
 
-  // Helper to try multiple Gemini models if rate limit or model errors occur
-  async function generateContentWithFallback(ai: GoogleGenAI, params: { contents: any; config: any }) {
+  // Helper to try multiple Groq models if rate limit or model errors occur
+  async function generateContentWithFallback(groq: Groq, params: { contents: any; config: any }) {
     const modelsToTry = [
-      "gemini-2.5-flash",
-      "gemini-2.0-flash",
-      "gemini-1.5-flash"
+      "llama-3.3-70b-versatile",
+      "llama-3.1-8b-instant",
+      "llama3-8b-8192",
+      "mixtral-8x7b-32768"
     ];
     let lastError: any = null;
 
+    // Build the system prompt including the JSON schema description if provided
+    let systemInstruction = params.config.systemInstruction || "You are a helpful assistant.";
+    if (params.config.responseSchema) {
+      systemInstruction += `\n\nYou MUST return a JSON object matching this JSON schema:\n${JSON.stringify(params.config.responseSchema, null, 2)}`;
+    }
+
     for (const modelName of modelsToTry) {
       try {
-        const response = await ai.models.generateContent({
+        const chatCompletion = await groq.chat.completions.create({
+          messages: [
+            { role: "system", content: systemInstruction },
+            { role: "user", content: params.contents }
+          ],
           model: modelName,
-          contents: params.contents,
-          config: params.config,
+          response_format: params.config.responseMimeType === "application/json" ? { type: "json_object" } : undefined,
         });
-        if (response && response.text) {
-          return response;
+        const text = chatCompletion.choices[0]?.message?.content;
+        if (text) {
+          return { text };
         }
       } catch (err: any) {
-        console.warn(`[Gemini API] Switching model from ${modelName}...`);
+        console.warn(`[Groq API] Switching model from ${modelName} due to error:`, err?.message || err);
         lastError = err;
       }
     }
 
-    throw lastError || new Error("All Gemini models encountered rate limits.");
+    throw lastError || new Error("All Groq models encountered errors or rate limits.");
   }
 
   // Health check
@@ -142,7 +155,7 @@ async function startServer() {
         return res.status(400).json({ error: "Topic is required" });
       }
 
-      const ai = getGeminiClient();
+      const ai = getGroqClient();
       const prompt = `Create a structured study plan for a university student.
 Topic: "${topic}"
 Duration: ${durationDays} days
@@ -188,7 +201,7 @@ Provide a day-by-day plan with specific focus areas, concrete tasks/actions to t
 
       const responseText = response.text;
       if (!responseText) {
-        throw new Error("No response content from Gemini API.");
+        throw new Error("No response content from Groq API.");
       }
 
       const planData = JSON.parse(responseText.trim());
@@ -221,7 +234,7 @@ Provide a day-by-day plan with specific focus areas, concrete tasks/actions to t
         return res.status(400).json({ error: "Topic is required" });
       }
 
-      const ai = getGeminiClient();
+      const ai = getGroqClient();
       const prompt = `Generate ${count} high-quality flashcards for a university level study session on the topic: "${topic}".
 Each flashcard should test an important definition, key concept, mechanism, or relationship. Keep questions crisp and answers highly accurate and self-contained.`;
 
@@ -253,7 +266,7 @@ Each flashcard should test an important definition, key concept, mechanism, or r
 
       const responseText = response.text;
       if (!responseText) {
-        throw new Error("No response content from Gemini API.");
+        throw new Error("No response content from Groq API.");
       }
 
       const flashcardsData = JSON.parse(responseText.trim());
@@ -279,7 +292,7 @@ Each flashcard should test an important definition, key concept, mechanism, or r
         return res.status(400).json({ error: "Topic/Concept name is required" });
       }
 
-      const ai = getGeminiClient();
+      const ai = getGroqClient();
       const explanationPrompt = mode === "explain_like_freshman"
         ? `Explain the concept: "${topic}" as if you are talking to an enthusiastic university freshman. Use simple, relatable terms, real-world analogies, and avoid overly dense jargon while maintaining scientific/academic correctness.`
         : `Provide a detailed academic breakdown of the concept: "${topic}" suitable for exam prep. Cover core mechanisms, key formulas or terms, historical or theoretical context, and common student pain points/pitfalls.`;
@@ -328,7 +341,7 @@ Also, create 1 multiple choice quiz question based on this explanation to let th
 
       const responseText = response.text;
       if (!responseText) {
-        throw new Error("No response content from Gemini API.");
+        throw new Error("No response content from Groq API.");
       }
 
       const explanationData = JSON.parse(responseText.trim());
@@ -365,7 +378,7 @@ Also, create 1 multiple choice quiz question based on this explanation to let th
         return res.status(400).json({ error: "Student query or official document content is required." });
       }
 
-      const ai = getGeminiClient();
+      const ai = getGroqClient();
 
       let contextPrompt = "";
       if (history && Array.isArray(history) && history.length > 0) {
@@ -513,7 +526,7 @@ YOUR MANDATE & PERSONA:
       const effectiveCredits = totalCredits !== undefined ? totalCredits : 0;
       const effectiveGradedCount = gradedCourseCount !== undefined ? gradedCourseCount : 0;
 
-      const ai = getGeminiClient();
+      const ai = getGroqClient();
       const prompt = `Student Query: "${query}"
 
 LIVE VERIFIED STUDENT PROFILE (Retrieved from Connected University Database):
@@ -575,7 +588,7 @@ CRITICAL ARCHITECTURAL DIRECTIVES:
       });
 
       const responseText = response.text;
-      if (!responseText) throw new Error("No response from Gemini API.");
+      if (!responseText) throw new Error("No response from Groq API.");
       res.json(JSON.parse(responseText.trim()));
     } catch (error: any) {
       console.warn("Scholarship AI Fallback Triggered:", error?.message || error);
@@ -664,7 +677,7 @@ CRITICAL ARCHITECTURAL DIRECTIVES:
       const activeRole = targetRole || "Software Developer";
       const activeSkillsStr = Array.isArray(studentSkills) ? studentSkills.join(", ") : studentSkills || "Python, JavaScript, React, SQL";
 
-      const ai = getGeminiClient();
+      const ai = getGroqClient();
       const prompt = `Student Career Request: "${query || "Evaluate my career profile and provide job matches"}"
 
 ACTIVE CUSTOM SEARCH CRITERIA (Session Overrides or Live Profile):
@@ -744,7 +757,7 @@ CRITICAL INSTRUCTIONS:
       });
 
       const responseText = response.text;
-      if (!responseText) throw new Error("No response from Gemini API.");
+      if (!responseText) throw new Error("No response from Groq API.");
       res.json(JSON.parse(responseText.trim()));
     } catch (error: any) {
       console.warn("Career Assistant Fallback Triggered:", error?.message || error);
@@ -913,7 +926,7 @@ CRITICAL INSTRUCTIONS:
         return res.status(400).json({ error: "Query is required" });
       }
 
-      const ai = getGeminiClient();
+      const ai = getGroqClient();
 
       let contextPrompt = `ACTIVE WORKSPACE / TAB: "${activeTab || "Dashboard"}"\n\n`;
 
@@ -1104,7 +1117,7 @@ INTELLIGENT FOLLOW-UP SUGGESTIONS & STRUCTURE:
       });
 
       const responseText = response.text;
-      if (!responseText) throw new Error("No response from Gemini API.");
+      if (!responseText) throw new Error("No response from Groq API.");
       res.json(JSON.parse(responseText.trim()));
     } catch (error: any) {
       console.warn("Omni Assistant Fallback Triggered:", error?.message || "Rate limit or model error");

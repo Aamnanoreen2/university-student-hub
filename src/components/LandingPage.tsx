@@ -816,7 +816,7 @@ export default function LandingPage({
             </div>
             <h3 className="text-lg font-bold text-white">AI Study Companion & Decks</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Generate custom structured multi-day study plans and interactive flashcard decks powered by Gemini AI.
+              Generate custom structured multi-day study plans and interactive flashcard decks powered by Groq AI.
             </p>
             <ul className="text-xs text-slate-300 space-y-1.5 pt-2">
               <li className="flex items-center gap-2">
@@ -923,7 +923,7 @@ export default function LandingPage({
             Explore All University Student Hub Capabilities
           </h2>
           <p className="text-slate-400 text-xs sm:text-sm mt-2">
-            Every module is tightly integrated with Gemini AI and Firebase Firestore for zero-friction real-time persistence.
+            Every module is tightly integrated with Groq AI and Firebase Firestore for zero-friction real-time persistence.
           </p>
         </div>
 
@@ -931,7 +931,7 @@ export default function LandingPage({
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {[
             { title: "GPA Planner & Credit Simulator", desc: "Forecast CGPA, calculate semester GPAs, and record completed credit hours with letter grade conversion.", icon: GraduationCap, color: "text-indigo-400" },
-            { title: "AI Study Companion & Flashcards", desc: "Generate multi-day study revision plans and self-testing flashcard decks using Gemini AI.", icon: Sparkles, color: "text-purple-400" },
+            { title: "AI Study Companion & Flashcards", desc: "Generate multi-day study revision plans and self-testing flashcard decks using Groq AI.", icon: Sparkles, color: "text-purple-400" },
             { title: "UniGuide AI Official Helpdesk", desc: "Ask questions on university regulations, attendance limits, grading schemes, and HEC degree attestation.", icon: Compass, color: "text-amber-400" },
             { title: "Scholarship & Financial Aid Radar", desc: "Discover fully-funded local (HEC, Ehsaas) and international grants matching your degree and CGPA.", icon: Award, color: "text-emerald-400" },
             { title: "Internship & Career Hub", desc: "Filter remote & local software/business roles, analyze your ATS resume score, and plan skill goals.", icon: Briefcase, color: "text-blue-400" },
@@ -1035,7 +1035,7 @@ export default function LandingPage({
               Democratizing AI Academic Support for Every University Student
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              UniHub AI was created to eliminate academic friction, financial uncertainty, and career confusion for university students in Pakistan and globally. By combining real-time academic calculators, official Higher Education Commission (HEC) regulation assistance, and Gemini AI companion models into one unified platform, we empower students to perform at their absolute best.
+              UniHub AI was created to eliminate academic friction, financial uncertainty, and career confusion for university students in Pakistan and globally. By combining real-time academic calculators, official Higher Education Commission (HEC) regulation assistance, and Groq AI companion models into one unified platform, we empower students to perform at their absolute best.
             </p>
             <div className="grid grid-cols-2 gap-4 pt-2 text-xs text-slate-300">
               <div className="flex items-center gap-2">
@@ -1297,7 +1297,7 @@ export default function LandingPage({
               </div>
               <div className="flex items-center gap-2 text-indigo-400">
                 <span className="h-2 w-2 rounded-full bg-indigo-400" />
-                <span>Gemini AI Models Online</span>
+                <span>Groq AI Models Online</span>
               </div>
               <p className="text-slate-500 pt-2">© 2026 UniHub AI. All rights reserved.</p>
             </div>

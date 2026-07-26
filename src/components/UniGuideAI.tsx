@@ -234,9 +234,9 @@ export const UniGuideAI: React.FC<UniGuideAIProps> = ({ messages, onSaveMessages
         timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
         data: {
           summary: "Could not complete query processing at this time.",
-          detailedExplanation: err.message || "An unexpected network or server error occurred. Please verify that your GEMINI_API_KEY is configured in Settings > Secrets.",
+          detailedExplanation: err.message || "An unexpected network or server error occurred. Please verify that your GROQ_API_KEY is configured in your hosting environment (for Vercel: Project Settings > Environment Variables).",
           requiredDocuments: [],
-          steps: ["Check your internet connection.", "Ensure GEMINI_API_KEY is set in Settings > Secrets.", "Contact the University Helpdesk directly."],
+          steps: ["Check your internet connection.", "Ensure GROQ_API_KEY is set in your hosting environment (for Vercel: Project Settings > Environment Variables).", "Contact the University Helpdesk directly."],
           responsibleOffice: "IT Helpdesk & System Support",
           notesAndWarnings: ["Official information could not be verified automatically."],
           officialSource: "System Error Log",

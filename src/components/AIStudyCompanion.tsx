@@ -22,7 +22,7 @@ const LOADING_MESSAGES = [
   "Summoning academic knowledge..."
 ];
 
-// High-quality local offline generators for Pakistani university students when Gemini API keys aren't set
+// High-quality local offline generators for Pakistani university students when Groq API keys aren't set
 export const getLocalStudyPlan = (topic: string, durationDays: number, intensity: string): AIStudyPlan => {
   const steps = [
     {
@@ -235,7 +235,7 @@ export default function AIStudyCompanion({
       const data = await response.json();
       setActivePlan(data);
     } catch (err: any) {
-      setErrorMsg(err.message || "An unexpected error occurred. Please check your Gemini API configuration.");
+      setErrorMsg(err.message || "An unexpected error occurred. Please check your Groq API configuration.");
     } finally {
       setLoading(false);
     }
@@ -443,12 +443,12 @@ export default function AIStudyCompanion({
           <div className="flex items-start gap-2.5">
             <HelpCircle className="h-5 w-5 text-amber-600 shrink-0 mt-0.5" />
             <div>
-              <p className="font-bold text-amber-950">Gemini AI Offline / Key Configuration Needed</p>
+              <p className="font-bold text-amber-950">Groq AI Offline / Key Configuration Needed</p>
               <p className="text-xs text-amber-800 mt-1">
                 {errorMsg}
               </p>
               <div className="text-xs text-slate-500 mt-2 bg-white/70 p-3 rounded-lg border border-amber-100 leading-relaxed">
-                <strong>How to fix:</strong> Click the <strong>Settings</strong> button at the top-right of your AI Studio screen, select <strong>Secrets</strong>, add your <code>GEMINI_API_KEY</code>, and click save.
+                <strong>How to fix:</strong> Add your <code>GROQ_API_KEY</code> to your hosting environment (for Vercel: <strong>Project Settings</strong> → <strong>Environment Variables</strong>), then redeploy.
               </div>
             </div>
           </div>
@@ -477,7 +477,7 @@ export default function AIStudyCompanion({
           <h3 className="text-lg font-bold text-slate-800">Generating Study Assistant Assets</h3>
           <p className="text-sm text-indigo-500 font-semibold mt-1.5">{LOADING_MESSAGES[loadingMsgIdx]}</p>
           <p className="text-xs text-slate-400 mt-4 max-w-xs">
-            Using Google Gemini-3.5-flash to custom build real academic plans and tutoring guides.
+            Using Groq Llama-3.3-70b to custom build real academic plans and tutoring guides.
           </p>
         </div>
       )}
@@ -542,7 +542,7 @@ export default function AIStudyCompanion({
                         className="w-full bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold text-sm py-2.5 px-4 rounded-xl transition shadow-sm flex items-center justify-center gap-2"
                       >
                         <Sparkles className="h-4 w-4" />
-                        Build Plan with Gemini
+                        Build Plan with Groq
                       </button>
                       <button
                         onClick={handleGenerateWithDemoMode}
@@ -749,7 +749,7 @@ export default function AIStudyCompanion({
                         className="w-full bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold text-sm py-2.5 px-4 rounded-xl transition shadow-sm flex items-center justify-center gap-2"
                       >
                         <Sparkles className="h-4 w-4" />
-                        Create Deck via Gemini
+                        Create Deck via Groq
                       </button>
                       <button
                         onClick={handleGenerateWithDemoMode}
