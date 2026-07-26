@@ -197,7 +197,7 @@ Distributed under the **MIT License**. See `LICENSE` for details.
 
 ---
 
-## DEPLOYED : https://university-student-hub-odve.vercel.app
+## DEPLOYED : https://university-student-hub-mu.vercel.app
 
 <img width="1800" height="884" alt="image" src="https://github.com/user-attachments/assets/90863a93-cef1-43a5-8ecd-5c60aebcc9a5" />
 <img width="1813" height="616" alt="image" src="https://github.com/user-attachments/assets/26cc1f17-bcaa-4265-9866-bb015e931872" />
