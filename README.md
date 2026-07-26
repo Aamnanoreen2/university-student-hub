@@ -232,6 +232,13 @@ Distributed under the **MIT License**. See `LICENSE` for details.
 
 <img width="644" height="793" alt="image" src="https://github.com/user-attachments/assets/e1c7cb34-1a73-4542-b5a0-48be14b137c2" />
 
+<img width="1812" height="877" alt="image" src="https://github.com/user-attachments/assets/b4ea2186-3994-49bb-8a58-427dfaaacf81" />
+
+<img width="1841" height="869" alt="image" src="https://github.com/user-attachments/assets/cd201f1b-8fad-4a00-8da7-95a5f3ecddc4" />
+<img width="1841" height="773" alt="image" src="https://github.com/user-attachments/assets/120383a3-83c6-4803-a55f-ed0a119561e6" />
+
+<img width="1363" height="626" alt="image" src="https://github.com/user-attachments/assets/5c68f2a2-3742-415a-9cbb-f65eed582584" />
+
 
 # 🤖 AI Modules
 
