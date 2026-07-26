@@ -197,6 +197,38 @@ Distributed under the **MIT License**. See `LICENSE` for details.
 
 ---
 
+## DEPLOYED : https://university-student-hub-alpha.vercel.app
+
+<img width="1800" height="884" alt="image" src="https://github.com/user-attachments/assets/90863a93-cef1-43a5-8ecd-5c60aebcc9a5" />
+<img width="1813" height="616" alt="image" src="https://github.com/user-attachments/assets/26cc1f17-bcaa-4265-9866-bb015e931872" />
+
+<img width="1813" height="881" alt="image" src="https://github.com/user-attachments/assets/c5d6baba-e2a9-43db-b753-f4e69b29cc6d" />
+
+<img width="1816" height="657" alt="image" src="https://github.com/user-attachments/assets/930ba156-0144-4d72-9e70-9091f69a58bf" />
+
+<img width="1823" height="879" alt="image" src="https://github.com/user-attachments/assets/c5eb0d0e-e519-4319-8403-178990d77d14" />
+
+<img width="1816" height="874" alt="image" src="https://github.com/user-attachments/assets/e6f22db0-f14f-40a1-9ec3-caf2fc611462" />
+
+<img width="1815" height="872" alt="image" src="https://github.com/user-attachments/assets/f1b27aea-ae58-43c9-9eca-5705bf0e6bb5" />
+
+<img width="1800" height="872" alt="image" src="https://github.com/user-attachments/assets/f606caff-1a18-4d2e-b22a-0911a87ecfb1" />
+
+<img width="1811" height="877" alt="image" src="https://github.com/user-attachments/assets/d3a66003-604c-4379-b34d-af05d6122508" />
+
+<img width="1843" height="889" alt="image" src="https://github.com/user-attachments/assets/aad164a5-456d-446c-9fef-1282fa184f34" />
+
+<img width="1837" height="888" alt="image" src="https://github.com/user-attachments/assets/d7c3c629-e7f5-4b8a-8ef0-9ee5797ff300" />
+
+<img width="1814" height="882" alt="image" src="https://github.com/user-attachments/assets/1e74a985-1c0e-4d00-8371-832bb6969a18" />
+
+
+<img width="1839" height="887" alt="image" src="https://github.com/user-attachments/assets/7c1bdf34-c387-45bc-b8ee-b607caba5a84" />
+
+<img width="1818" height="872" alt="image" src="https://github.com/user-attachments/assets/f33e454f-63b8-4f4a-aabd-f2c74be9f990" />
+
+<img width="1833" height="775" alt="image" src="https://github.com/user-attachments/assets/75760897-c199-4648-ad23-5c192d44ba86" />
+
 <p center>
 Made with ❤️ for students worldwide by <strong>UniHub.AI Team</strong>. Direct feedback: <a href="mailto:aamnanoreen0@gmail.com">aamnanoreen0@gmail.com</a>
 </p>
