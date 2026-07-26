@@ -1228,12 +1228,31 @@ INTELLIGENT FOLLOW-UP SUGGESTIONS & STRUCTURE:
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`[UniHub Server] Server active on http://0.0.0.0:${PORT}`);
+  if (!process.env.VERCEL) {
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`[UniHub Server] Server active on http://0.0.0.0:${PORT}`);
+    });
+  }
+
+  return app;
+}
+
+let cachedApp: any = null;
+async function getApp() {
+  if (!cachedApp) {
+    cachedApp = await startServer();
+  }
+  return cachedApp;
+}
+
+if (!process.env.VERCEL) {
+  getApp().catch((err) => {
+    console.error("Fatal Server Startup Error:", err);
+    process.exit(1);
   });
 }
 
-startServer().catch((err) => {
-  console.error("Fatal Server Startup Error:", err);
-  process.exit(1);
-});
+export default async function handler(req: any, res: any) {
+  const app = await getApp();
+  app(req, res);
+}
