@@ -17,10 +17,21 @@ import {
   getDoc, 
   onSnapshot 
 } from "firebase/firestore";
-import firebaseConfig from "../../firebase-applet-config.json";
+import rawFirebaseConfig from "../../firebase-applet-config.json";
+
+// Read Firebase client configuration from environment variables with fallback
+const activeFirebaseConfig = {
+  ...rawFirebaseConfig,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || rawFirebaseConfig.apiKey,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || rawFirebaseConfig.projectId,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || rawFirebaseConfig.appId,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || rawFirebaseConfig.authDomain,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || rawFirebaseConfig.storageBucket,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || rawFirebaseConfig.messagingSenderId,
+};
 
 // Initialize Firebase
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+const app = !getApps().length ? initializeApp(activeFirebaseConfig) : getApp();
 
 // Initialize Auth
 export const auth = getAuth(app);
@@ -53,7 +64,7 @@ export const signInWithGoogleWithGmail = async () => {
 };
 
 // Initialize Firestore with custom database ID if provided
-const customDbId = (firebaseConfig as Record<string, any>).firestoreDatabaseId;
+const customDbId = (activeFirebaseConfig as Record<string, any>).firestoreDatabaseId;
 export const db = customDbId && customDbId !== "(default)"
   ? getFirestore(app, customDbId)
   : getFirestore(app);
