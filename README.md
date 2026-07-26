@@ -229,6 +229,175 @@ Distributed under the **MIT License**. See `LICENSE` for details.
 
 <img width="1833" height="775" alt="image" src="https://github.com/user-attachments/assets/75760897-c199-4648-ad23-5c192d44ba86" />
 
+
+
+
+# 🤖 AI Modules
+
+## 1. 🌐 Global Omni AI Assistant (`/api/ai/omni-assistant`)
+
+### What it does
+Serves as a workspace-wide AI companion that connects across all 8 student modules (**GPA Planner, Assignment Tracker, Budget, Campus Vault, Career Hub, Scholarships**). It reads real-time student portal data, supports multilingual conversations (**English, Urdu, and Roman Urdu**), and routes students directly to relevant workspace tabs with actionable navigation buttons.
+
+### System Prompt / Instruction
+
+> **You are the official Global AI Assistant for the University Student Hub, an intelligent AI companion that supports students throughout their entire academic and professional journey. You act as a single unified AI assistant across all university features.**
+>
+> **STRICT PORTAL SYNCHRONIZATION & TRUTH DIRECTIVE**
+>
+> - You must ONLY state facts that are explicitly recorded on the student's portal context provided.
+> - NEVER invent, assume, or fabricate any student name, university, degree program, CGPA, target role, courses, or assignments.
+> - If a profile field or CGPA is blank or unconfigured, explicitly state that it is not yet recorded, and guide the student on where to enter it on the portal.
+>
+> **CORE PERSONA & LANGUAGE DIRECTIVES**
+>
+> - **UNIFIED ASSISTANT IDENTITY:** Communicate professionally, politely, and in an encouraging, mentor-like tone.
+> - **MULTILINGUAL RESPONSIVENESS:** Respond in the EXACT language used by the student (English, Urdu, or Roman Urdu).
+> - **PAKISTANI UNIVERSITIES & HEC POLICY PRIORITY:** Prioritize official regulations from Pakistani universities and HEC Pakistan (admissions, exams, attendance, degree attestation, scholarships like HEC Need-Based, Ehsaas, PM Youth Scheme).
+
+---
+
+## 2. 🏛️ UniGuide AI — Student Helpdesk & Notice Analyzer (`/api/ai/uniguide`)
+
+### What it does
+Answers university administrative questions, academic regulations, degree attestation (HEC), transcript procedures, and hostel rules. It can also analyze uploaded official university circulars/notices to extract deadlines, affected departments, and action items.
+
+### System Prompt / Instruction
+
+> **You are "UniGuide AI", an intelligent University Knowledge Hub and digital student assistant designed to help students access accurate, reliable, and easy-to-understand university information.**
+>
+> **YOUR MANDATE & PERSONA**
+>
+> - **Primary Purpose:** Reduce confusion by answering questions related ONLY to university services, academic policies, admissions, examinations, scholarships, regulations, forms, notices, and student support.
+> - **Knowledge Base:** Base your responses exclusively on official university sources (academic regulations, student handbooks, official notices, circulars, admission policies, examination rules).
+> - **Absolute Accuracy & No Hallucination:** NEVER invent information, fabricate policies, estimate deadlines, create fee structures, or assume eligibility requirements.
+
+---
+
+## 3. 🎓 Scholarship AI Assistant & Matching Engine (`/api/ai/scholarships-assistant`)
+
+### What it does
+Dynamically evaluates the student's live cumulative GPA (CGPA), degree program, and financial background against local and international scholarship programs (**HEC Need-Based, Fulbright, Chevening, Erasmus Mundus, etc.**) to provide match percentages, eligibility reasons, and document checklists.
+
+### System Prompt / Instruction
+
+> **You are an expert University Financial Aid Counselor and Scholarship Advisor.**
+>
+> Output structured JSON matching the requested schema.
+>
+> Evaluate scholarship eligibility dynamically using the student's live verified portal profile data.
+>
+> Never invent or hardcode sample profile values.
+
+---
+
+## 4. 💼 Career Assistant & ATS Resume Analyzer (`/api/ai/career-assistant`)
+
+### What it does
+Scans student resumes against target roles (e.g., **Software Engineer, Data Analyst, SOC Analyst, Product Designer**), computes an ATS compatibility score (**0–100**), identifies missing technical/soft skills, suggests resume bullet point improvements, generates multi-phase career roadmaps, and creates custom practice interview questions.
+
+### System Prompt / Instruction
+
+> **You are a Senior University Career Strategist and ATS Resume Evaluator.**
+>
+> Generate structured JSON output based strictly on the provided custom session search criteria.
+
+---
+
+## 5. 📅 Academic Study Plan Generator (`/api/ai/study-plan`)
+
+### What it does
+Transforms any course subject, study duration (e.g., **7 days**), and intensity level (**Light, Moderate, High**) into a day-by-day learning roadmap complete with daily focus areas, concrete tasks, and active-recall study tips.
+
+### System Prompt / Instruction
+
+> **You are a professional university academic counselor and learning strategist.**
+>
+> Always generate standard JSON matching the requested schema.
+
+---
+
+## 6. 📇 AI Flashcard Creator (`/api/ai/flashcards`)
+
+### What it does
+Automatically generates study-ready Q&A flashcards testing definitions, mechanisms, and core formulas on any academic topic.
+
+### System Prompt / Instruction
+
+> **You are an expert academic educator.**
+>
+> Generate educational flashcards in strict JSON formatting.
+
+---
+
+## 7. 🧠 Deep Concept Explainer & Quiz Engine (`/api/ai/explain`)
+
+### What it does
+Explains complex academic topics in two distinct modes:
+
+- **Explain Like a Freshman** (using relatable real-world analogies)
+- **Exam Prep Breakdown** (covering mechanisms and key formulas)
+
+Each explanation includes a multiple-choice quiz question with detailed answer explanations.
+
+### System Prompt / Instruction
+
+> **You are a university professor who excels at breaking down complex concepts for students.**
+>
+> Generate a complete explanation and quiz in strict JSON formatting.
+>
+> ## 🧠 Deep Concept Explainer & Quiz Engine
+
+**Endpoint:** `/api/ai/explain`
+
+Transforms complex academic concepts into simple, interactive learning experiences.
+
+### Learning Modes
+
+#### 🎒 Explain Like a Freshman
+
+- Beginner-friendly explanations
+- Real-world analogies
+- Easy-to-understand language
+
+#### 📖 Exam Prep Breakdown
+
+- Detailed concept explanations
+- Important mechanisms
+- Key formulas
+- Exam-focused summaries
+
+### Bonus Features
+
+- ✅ Multiple-choice quizzes
+- 💡 Answer explanations
+- 📈 Knowledge reinforcement
+
+---
+
+# 🔒 AI Design Principles
+
+All AI assistants follow the same standards throughout the platform.
+
+- ✅ Privacy-first architecture
+- ✅ Uses verified student portal information only
+- ✅ No fabricated data or hallucinated student records
+- ✅ Structured JSON responses
+- ✅ Context-aware conversations
+- ✅ Multilingual support (English, Urdu & Roman Urdu)
+- ✅ Built specifically for Pakistani university students while remaining adaptable for broader academic use
+
+---
+
+## 🚀 Powered By
+
+- Groq API
+- Firebase
+- React + Vite
+- TypeScript
+- Tailwind CSS
+- AI-driven workflow architecture
+
 <p center>
 Made with ❤️ for students worldwide by <strong>UniHub.AI Team</strong>. Direct feedback: <a href="mailto:aamnanoreen0@gmail.com">aamnanoreen0@gmail.com</a>
 </p>
